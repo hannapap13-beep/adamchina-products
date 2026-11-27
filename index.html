@@ -3,94 +3,204 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barefoot Guru // System Online</title>
+  <title>Строительная компания — подряд, генподряд, объекты</title>
   <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #0d1117;
-      color: #e6edf3;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
-      padding: 20px;
-    }
-    .card {
-      max-width: 560px;
-      border: 1px solid #30363d;
-      border-radius: 12px;
-      padding: 36px;
-      background: #161b22;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
-    }
-    .badge {
-      display: inline-block;
-      font-size: 12px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: #3fb950;
-      border: 1px solid #238636;
-      padding: 4px 10px;
-      border-radius: 20px;
-      margin-bottom: 18px;
-    }
-    h1 {
-      margin: 0 0 14px;
-      font-size: 28px;
-      line-height: 1.2;
-    }
-    p {
-      color: #8b949e;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #111317;
+      color: #f3f4f6;
       line-height: 1.6;
-      margin: 0 0 24px;
     }
-    button {
-      background: #238636;
-      color: #ffffff;
-      border: none;
-      padding: 12px 20px;
+    .container { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+    header {
+      border-bottom: 1px solid #262a33;
+      padding: 18px 0;
+      position: sticky;
+      top: 0;
+      background: rgba(17, 19, 23, 0.92);
+      backdrop-filter: blur(8px);
+    }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .logo { font-weight: 700; font-size: 18px; letter-spacing: 0.5px; color: #f59e0b; text-decoration: none; }
+    .nav-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .nav-links a { color: #cbd5e1; text-decoration: none; font-size: 14px; }
+    .nav-links a:hover { color: #f59e0b; }
+
+    .hero { padding: 72px 0 56px; border-bottom: 1px solid #262a33; }
+    .hero h1 { font-size: clamp(30px, 5vw, 48px); line-height: 1.15; margin-bottom: 18px; }
+    .hero p { color: #9ca3af; font-size: 18px; max-width: 680px; margin-bottom: 28px; }
+    .actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: 13px 22px;
       border-radius: 8px;
-      font-size: 15px;
       font-weight: 600;
+      text-decoration: none;
       cursor: pointer;
-      transition: background 0.2s;
+      border: none;
+      font-size: 15px;
     }
-    button:hover {
-      background: #2ea043;
+    .btn-primary { background: #f59e0b; color: #111317; }
+    .btn-primary:hover { background: #fbbf24; }
+    .btn-tg { background: #1e293b; color: #f8fafc; border: 1px solid #334155; }
+    .btn-tg:hover { border-color: #38bdf8; }
+
+    section { padding: 60px 0; border-bottom: 1px solid #262a33; }
+    h2 { font-size: 28px; margin-bottom: 24px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+    .card {
+      background: #181c23;
+      border: 1px solid #262a33;
+      border-radius: 10px;
+      padding: 22px;
     }
-    #status {
-      margin-top: 18px;
-      font-size: 14px;
-      color: #58a6ff;
-      min-height: 20px;
+    .card h3 { font-size: 18px; margin-bottom: 8px; color: #f9fafb; }
+    .card p { color: #9ca3af; font-size: 14px; }
+
+    form { display: grid; gap: 14px; max-width: 540px; }
+    input, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid #2d3340;
+      background: #181c23;
+      color: #f3f4f6;
+      font-size: 15px;
+      font-family: inherit;
     }
+    input:focus, textarea:focus { outline: none; border-color: #f59e0b; }
+    #form-status { font-size: 14px; min-height: 20px; color: #34d399; }
+
+    footer { padding: 28px 0; color: #6b7280; font-size: 14px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
   </style>
 </head>
 <body>
-  <div class="card">
-    <div class="badge">● Node Active // v0.1</div>
-    <h1>Связь установлена. Сайт в эфире.</h1>
-    <p>
-      Если ты видишь эту страницу по ссылке, значит GitHub Pages работает,
-      хостинг бесплатный, а твой первый узел в сети только что ожил.
-    </p>
-    <button onclick="ping()">Проверить пульс системы</button>
-    <div id="status"></div>
-  </div>
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo">СТРОЙСТАНДАРТ</a>
+      <div class="nav-links">
+        <a href="#services">Направления</a>
+        <a href="#objects">Объекты</a>
+        <a href="#contact">Заявка</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Строительство, реконструкция и генподряд под ключ</h1>
+        <p>Работаем с коммерческими и промышленными объектами. Смета без сюрпризов, понятные этапы, еженедельный фотоотчет на объекте.</p>
+        <div class="actions">
+          <a href="#contact" class="btn btn-primary">Рассчитать проект</a>
+          <!-- Замени username_менеджера на реальный ник в Telegram -->
+          <a href="https://t.me/username_менеджера" target="_blank" rel="noopener" class="btn btn-tg">Написать в Telegram</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <h2>Направления работ</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Общестрой и каркасы</h3>
+            <p>Фундаменты, монолитные работы, металлоконструкции и возведение коробок зданий с соблюдением СНиП и сроков.</p>
+          </div>
+          <div class="card">
+            <h3>Реконструкция и усиление</h3>
+            <p>Обновление действующих помещений, перепланировки, усиление несущих элементов без остановки соседних процессов.</p>
+          </div>
+          <div class="card">
+            <h3>Инженерия и отделка</h3>
+            <p>Черновые и чистовые работы, сети, подготовка площадок под запуск арендаторов, складов или производства.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="objects">
+      <div class="container">
+        <h2>Ключевые объекты</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Складской комплекс, 3 400 м²</h3>
+            <p>Устройство бетонных полов с топпингом, монтаж ограждающих конструкций, сдача в срок за 4 месяца.</p>
+          </div>
+          <div class="card">
+            <h3>Торгово-офисный блок, 1 850 м²</h3>
+            <p>Капитальный ремонт и внутренние работы под ключ с поэтапной приемкой заказчиком.</p>
+          </div>
+          <div class="card">
+            <h3>Производственный цех</h3>
+            <p>Подготовка фундаментов под оборудование, устройство проездов и благоустройство территории.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2>Оставить заявку на расчет</h2>
+        <form id="tg-form">
+          <input type="text" name="name" placeholder="Ваше имя и компания" required>
+          <input type="text" name="phone" placeholder="Телефон или @username в Telegram" required>
+          <textarea name="details" rows="4" placeholder="Кратко: что строим, локация, примерная площадь или сроки" required></textarea>
+          <button type="submit" class="btn btn-primary">Отправить в Telegram</button>
+          <div id="form-status"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:12px;">
+      <span>© Стройстандарт</span>
+      <span>+375 (29) 000-00-00 · info@example.com</span>
+    </div>
+  </footer>
 
   <script>
-    const phrases = [
-      "Сигнал отличный. Кроссовки на толстой подошве нервничают.",
-      "Калибровка запущена. Полет нормальный.",
-      "Сервер отвечает: 0 долларов в месяц, 100% автономии.",
-      "Тест пройден. Можно загружать настоящий протокол."
-    ];
-    let i = 0;
-    function ping() {
-      document.getElementById("status").textContent = "> " + phrases[i % phrases.length];
-      i++;
-    }
+    // Вставь сюда данные своего бота (из @BotFather) и ID чата (из @userinfobot)
+    const BOT_TOKEN = "ВСТАВЬ_BOT_TOKEN";
+    const CHAT_ID = "ВСТАВЬ_CHAT_ID";
+
+    const form = document.getElementById("tg-form");
+    const statusEl = document.getElementById("form-status");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      statusEl.style.color = "#fbbf24";
+      statusEl.textContent = "Отправляем заявку...";
+
+      const data = new FormData(form);
+      const text = [
+        "🏗 Новая заявка с сайта стройки",
+        `Имя/компания: ${data.get("name")}`,
+        `Контакт: ${data.get("phone")}`,
+        `Задача: ${data.get("details")}`
+      ].join("\n");
+
+      try {
+        const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ chat_id: CHAT_ID, text })
+        });
+
+        if (res.ok) {
+          statusEl.style.color = "#34d399";
+          statusEl.textContent = "Заявка ушла в Telegram. Свяжемся в ближайшее время.";
+          form.reset();
+        } else {
+          throw new Error("Telegram API error");
+        }
+      } catch (err) {
+        statusEl.style.color = "#f87171";
+        statusEl.textContent = "Не удалось отправить — проверь BOT_TOKEN и CHAT_ID в коде.";
+      }
+    });
   </script>
 </body>
 </html>
